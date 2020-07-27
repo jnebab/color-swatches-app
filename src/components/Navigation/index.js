@@ -4,7 +4,9 @@ import styled from 'styled-components'
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import InputBase from '@material-ui/core/InputBase';
-import Typography from '@material-ui/core/Typography';
+import Avatar from '@material-ui/core/Avatar';
+
+import Logo from '../../assets/logo-symbol.svg'
 
 const StyledAppBar = styled(AppBar)`
     background-color: #363c3c !important;    
@@ -27,6 +29,7 @@ const StyledSearchBox = styled(InputBase)`
         background: #fff;
         border-radius: 8px;
         padding: 8px 15px;
+        font-family: 'Source Serif Pro', serif;
     }
 `
 
@@ -34,9 +37,7 @@ export default function Navigation(props) {
     return (
     <StyledAppBar position="fixed">
         <StyledToolbar>
-            <Typography variant="h6" noWrap>
-                Helpful Human
-            </Typography>
+            <Avatar src={Logo} />
             <StyledSearchBox
                 placeholder="Search"
                 inputProps={{ 'aria-label': 'search' }}

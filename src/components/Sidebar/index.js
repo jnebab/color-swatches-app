@@ -1,5 +1,5 @@
 import React from 'react'
-
+import { useHistory } from "react-router-dom";
 import styled from 'styled-components'
 
 import Drawer from '@material-ui/core/Drawer';
@@ -13,7 +13,26 @@ const StyledDrawer = styled(Drawer)`
         width: 300px !important;
         padding-top: 120px;
         background: #d6d8d8 !important;
+       
     }
+
+    .MuiButton-label,
+    .MuiTypography-body1 {
+        font-family: 'Source Serif Pro', serif;
+        text-transform: capitalize;
+        color: #000;
+    }
+
+    .MuiButton-label {
+        font-size: 1.25rem;
+        font-weight: 600;
+    }
+
+`
+
+const InnerDrawer = styled.div`
+    width: 90%;
+    margin: 0 auto;
 `
 
 const StyledButton = styled(Button)`
@@ -22,23 +41,34 @@ const StyledButton = styled(Button)`
     border: 1px solid #000 !important;
     border-radius: 8px !important;
     background: #fff !important;
+    width: 100%;
+
 `
 
-export default function Sidebar({ randomSwatches, handleRandomColor }) {
+export default function Sidebar({ data }) {
+    const history = useHistory()
+
+    const handleRandomColor = () => {
+        const randomIndex = Math.ceil(Math.random() * (11 - 0) + 0)
+        const randomColor = data?.data[randomIndex].hex
+        const hex = randomColor.replace("#", "")
+        history.push(hex)
+    }
+
     return (
         <StyledDrawer
             variant="permanent"
         >
-            <div>
+            <InnerDrawer>
                 <StyledButton onClick={handleRandomColor}>Random Color</StyledButton>
                 <List>
-                    {randomSwatches.map((swatch) => (
-                    <ListItem button key={swatch.hex}>
+                    {data?.data?.map((swatch) => (
+                    <ListItem button key={swatch.hex} onClick={() => history.push(swatch.hex.replace("#", ""))}>
                         <ListItemText primary={swatch.name} />
                     </ListItem>
                     ))}
                 </List>
-            </div>
+            </InnerDrawer>
       </StyledDrawer>
     )
 }

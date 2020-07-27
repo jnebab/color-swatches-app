@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import styled from "styled-components";
 import shuffle from 'lodash/shuffle'
 
@@ -28,16 +29,16 @@ function App() {
     setPage(page - 1)
   }
 
-  const handleRandomColor = useCallback(() => {
+  const handleRandomColors = useCallback(() => {
     const shuffled = [...shuffle(data?.colorSwatches?.data).slice(0, 5)]
     setRandomSwatches(shuffled)
   }, [data])
 
   useEffect(() => {
     if(data?.colorSwatches) {
-      handleRandomColor()
+      handleRandomColors()
     }
-  }, [data, handleRandomColor])
+  }, [data, handleRandomColors])
 
   if(loading) {
     return  (
@@ -52,7 +53,7 @@ function App() {
       <AppWrapper>
         <CssBaseline />
         <Navigation />
-        <Sidebar handleRandomColor={handleRandomColor} randomSwatches={randomSwatches}/>
+        <Sidebar data={data?.colorSwatches} />
         <Switch>
             <Route
               path="/"

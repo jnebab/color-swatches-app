@@ -20,7 +20,7 @@ const StyledGridListTile = styled(GridListTile)`
         -webkit-box-shadow: 7px 7px 11px -9px rgba(0,0,0,0.29);
         -moz-box-shadow: 7px 7px 11px -9px rgba(0,0,0,0.29);
         box-shadow: 7px 7px 11px -9px rgba(0,0,0,0.29);
-        border-radius: 15px;
+        border-radius: 8px;
     }
 
     .MuiGridListTileBar-root {
@@ -29,6 +29,7 @@ const StyledGridListTile = styled(GridListTile)`
 
     .MuiGridListTileBar-title {
         color: #000;
+        font-family: 'Source Serif Pro', serif;
     }
 `
 
