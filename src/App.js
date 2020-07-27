@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import { useHistory } from "react-router-dom";
 import styled from "styled-components";
 import shuffle from 'lodash/shuffle'
 

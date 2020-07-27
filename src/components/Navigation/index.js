@@ -19,7 +19,6 @@ const StyledAppBar = styled(AppBar)`
 
 const StyledToolbar = styled(Toolbar)`
     display: flex;
-    ${'' /* width: 100%; */}
     justify-content: space-between;
 `
 
